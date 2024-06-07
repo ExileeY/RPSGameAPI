@@ -13,9 +13,6 @@ class GamesController < ApplicationController
 private
 
   def game_params
-    params.require(:game).permit(
-      :user_choice,
-      :computer_choice
-    )
+    params.require(:game).permit(:user_choice).merge(computer_choice: ComputerChoiceGenerator.call)
   end
 end

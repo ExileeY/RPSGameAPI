@@ -10,10 +10,7 @@ RSpec.describe "Games", type: :request do
     let(:params) do
       {
         uuid: uuid,
-        game: {
-          user_choice: choice,
-          computer_choice: choice
-        }
+        game: { user_choice: choice }
       }
     end
 
@@ -22,7 +19,7 @@ RSpec.describe "Games", type: :request do
         expect { subject }.to change { Game.count }.by(1)
 
         expect(response).to have_http_status(:created)
-        expect(JSON.parse(response.body)).to match({ 'result' => 'Tie!' })
+        expect(JSON.parse(response.body)).to match({ 'result' => a_kind_of(String) })
       end
     end
 
