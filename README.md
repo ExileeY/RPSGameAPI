@@ -1,24 +1,7 @@
-# README
+# Rock-Paper-Scissors game API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## INSTALATION
+Use `git clone git@github.com:ExileeY/RPSGameAPI.git` command to clone repository.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## HOW TO USE
+Once you have a repository with an API, you need to start the server using the `rails server` command.
