@@ -4,9 +4,9 @@ class GamesController < ApplicationController
 
     if @game.new_record?
       @game.update(game_params)
-      render json: @game, status: :created
+      render json: { result: @game.result }, status: :created
     else
-      render json: @game, status: :ok
+      render json: { result: @game.result }, status: :ok
     end
   end
 

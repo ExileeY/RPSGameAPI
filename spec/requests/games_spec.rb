@@ -19,8 +19,10 @@ RSpec.describe "Games", type: :request do
 
     context 'when the game is new' do
       it 'returns a 201 status code' do
-        subject
+        expect { subject }.to change { Game.count }.by(1)
+
         expect(response).to have_http_status(:created)
+        expect(JSON.parse(response.body)).to match({ 'result' => 'Tie!' })
       end
     end
 
@@ -29,8 +31,10 @@ RSpec.describe "Games", type: :request do
       after { Game.find_by(uuid: uuid).destroy }
 
       it 'returns a 200 status code' do
-        subject
+        expect { subject }.to change { Game.count }.by(0)
+
         expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)).to match({ 'result' => 'Tie!' })
       end
     end
   end
