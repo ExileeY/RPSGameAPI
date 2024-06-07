@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
-  let(:game) { described_class.new }
+  let(:game_options) { {} }
+  let(:game) { described_class.new(**game_options) }
 
   describe 'attributes' do
     subject { game }
@@ -23,19 +24,25 @@ RSpec.describe Game, type: :model do
     subject { game.result }
 
     context 'when the user and computer choices are the same' do
-      let(:game) { described_class.new(user_choice: 'rock', computer_choice: 'rock') }
+      let(:game_options) do
+        { user_choice: 'rock', computer_choice: 'rock' }
+      end
 
       it { is_expected.to eq('Tie!') }
     end
 
     context 'when the user wins' do
-      let(:game) { described_class.new(user_choice: 'rock', computer_choice: 'scissors') }
+      let(:game_options) do
+        { user_choice: 'rock', computer_choice: 'scissors' }
+      end
 
       it { is_expected.to eq('You win!') }
     end
 
     context 'when the computer wins' do
-      let(:game) { described_class.new(user_choice: 'rock', computer_choice: 'paper') }
+      let(:game_options) do
+        { user_choice: 'scissors', computer_choice: 'rock' }
+      end
 
       it { is_expected.to eq('Computer wins!') }
     end
