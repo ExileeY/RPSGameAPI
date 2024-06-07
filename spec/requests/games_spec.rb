@@ -30,7 +30,6 @@ RSpec.describe "Games", type: :request do
 
       it 'returns a 200 status code' do
         subject
-        debugger
         expect(response).to have_http_status(:ok)
       end
     end
