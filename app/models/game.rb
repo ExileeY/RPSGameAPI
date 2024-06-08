@@ -7,7 +7,7 @@ class Game < ApplicationRecord
     'scissors' => 'paper'
   }.freeze
 
-  validates :uuid, presence: true
+  validates :uuid, presence: true, uniqueness: true
   validates :user_choice, :computer_choice, inclusion: { in: CHOICES }
 
   def result
