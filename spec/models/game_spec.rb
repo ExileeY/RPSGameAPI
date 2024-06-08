@@ -16,6 +16,7 @@ RSpec.describe Game, type: :model do
     subject { game }
 
     it { is_expected.to validate_presence_of(:uuid) }
+    it { is_expected.to validate_uniqueness_of(:uuid) }
     it { is_expected.to validate_inclusion_of(:user_choice).in_array(Game::CHOICES) }
     it { is_expected.to validate_inclusion_of(:computer_choice).in_array(Game::CHOICES) }
   end
